@@ -164,47 +164,6 @@
       );
       $("#sortable").disableSelection();
     </script>
-    <script>
-      let saveFile = () => {
-        const emailinput = document.getElementById("emailinput");
-
-        let data = "\r Email: " + emailinput.value;
-
-        // Convert the text to BLOB.
-        const textToBLOB = new Blob([data], { type: "text/plain" });
-        const sFileName = "formData.txt"; // The file to save the data.
-
-        let newLink = document.createElement("a");
-        newLink.download = sFileName;
-
-        if (window.webkitURL != null) {
-          newLink.href = window.webkitURL.createObjectURL(textToBLOB);
-        } else {
-          newLink.href = window.URL.createObjectURL(textToBLOB);
-          newLink.style.display = "none";
-          document.body.appendChild(newLink);
-        }
-
-        newLink.click();
-        let datae = "\r Email: " + emailinput.value;
-
-        let newLink = document.createElement("a");
-        newLink.download = sFileName;
-
-        if (window.webkitURL != null) {
-          newLink.href = window.webkitURL.createObjectURL(textToBLOB);
-        } else {
-          newLink.href = window.URL.createObjectURL(textToBLOB);
-          newLink.style.display = "none";
-          document.body.appendChild(newLink);
-        }
-
-        if (window.webkitURL != null) {
-          newLink.href = window.webkitURL.createObjectURL(textToBLOB);
-          console.log(newLink); // add this line and see the result in your browser's console window.
-        }
-        newLink.click();
-      };
-    </script>
+    
   </body>
 </html>
