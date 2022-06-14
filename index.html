@@ -3,11 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Picture Puzzle Game</title>
+    <title>WGroup Puzzle Game</title>
     <link rel="stylesheet" href="/jquery/jquery-ui.css" />
     <style>
+      @font-face {
+        font-family: first;
+        src: url(nasir-udin-prodasans/Nasir\ Udin\ -\ ProdaSans-Medium.otf);
+      }
+      @font-face {
+        font-family: bolds;
+        src: url(nasir-udin-prodasans/Nasir\ Udin\ -\ ProdaSans-SemiBoldItalic.otf);
+      }
       body {
         margin: auto;
+        background-image: url("back.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
       }
       #puzzle {
         width: 600px;
@@ -15,11 +27,11 @@
         touch-action: none;
       }
       .tile {
-        background-image: url("kgf.jpg");
+        background-image: url("test1.png");
         width: 200px;
         height: 200px;
         float: left;
-        border: 1px solid silver;
+
         box-sizing: border-box;
       }
       #tile1 {
@@ -59,46 +71,209 @@
         color: #fff;
         padding: 20px;
       }
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Position the image container (needed to position the left and right arrows) */
+      .container {
+        position: relative;
+      }
+
+      /* Hide the images by default */
+      .mySlides {
+        display: none;
+      }
+
+      /* Add a pointer when hovering over the thumbnail images */
+      .cursor {
+        cursor: pointer;
+      }
+
+      /* Next & previous buttons */
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 40%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      /* Position the "next button" to the right */
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+
+      /* On hover, add a black background color with a little bit see-through */
+      .prev:hover,
+      .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+      /* Container for image text */
+      .caption-container {
+        text-align: center;
+        background-color: #222;
+        padding: 2px 16px;
+        color: white;
+      }
+
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* Six columns side by side */
+      .column {
+        float: left;
+        width: 16.66%;
+      }
+
+      /* Add a transparency effect for thumnbail images */
+      .demo {
+        opacity: 0.6;
+      }
+
+      .active,
+      .demo:hover {
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
-    <p style="text-align: center">
-      S O L V E <br />
-      <b> THE PUZZLE </b>
-    </p>
-    <div id="puzzle" class="sortable">
-      <div id="tile1" class="tile"></div>
-      <div id="tile2" class="tile"></div>
-      <div id="tile3" class="tile"></div>
-      <div id="tile4" class="tile"></div>
-      <div id="tile5" class="tile"></div>
-      <div id="tile6" class="tile"></div>
-      <div id="tile7" class="tile"></div>
-      <div id="tile8" class="tile"></div>
-      <div id="tile9" class="tile"></div>
-    </div>
+    <div class="container">
+      <div>
+        <p
+          style="
+            font-family: 'bolds';
+            letter-spacing: 11px;
+            text-align: center;
+            margin: 0%;
+          "
+        >
+          SOLVE
+        </p>
+        <br />
+        <p
+          style="
+            font-family: 'first';
+            font-style: normal;
+            text-align: center;
+            margin: 0%;
+          "
+        >
+          THE PUZZLE
+        </p>
+      </div>
+      <!-- Full-width images with number text -->
+      <div class="mySlides">
+        <a href="kgf.html">
+          <img src="test1.png" style="justify-content: center"
+        /></a>
+      </div>
 
-    <div id="" style="display: block; text-align: center">
-      <!-- <div id="message">        
-<h1>Picture Puzzle</h1>        
-Click on start button to shuffle and rearrage tiles. Solve the puzzle        
-by rearranging them to the picture shown.      
-</div      >
-<br /><br />       -->
-      <button id="startBtn" style="display: inline" onclick="shuffle()">
-        <b> PLAYa </b></button
-      ><br /><br />
+      <div class="mySlides">
+        <img src="test2.png" />
+      </div>
+
+      <div class="mySlides">
+        <img src="test3.png" />
+      </div>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+      <div class="caption-container">
+        <p id="caption"></p>
+      </div>
+      <div class="row">
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="test1.png"
+            style="width: 100%"
+            onclick="currentSlide(1)"
+            alt="Digi Tableau"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="test2.png"
+            style="width: 100%"
+            onclick="currentSlide(2)"
+            alt="Iconic Art"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="test3.png"
+            style="width: 100%"
+            onclick="currentSlide(3)"
+            alt="3D Screen - Yas Mall"
+          />
+        </div>
+      </div>
     </div>
-    <h1
-      style="position: absolute; top: 0px; right: 0px; padding: 10px"
-      id="timer"
-    ></h1>
 
     <script src="jquery/jquery.min.js"></script>
     <script src="jquery/jquery-ui.js"></script>
 
-    <script src="jquery/touch-dnd.js"></script>
+    <!-- <script src="jquery/touch-dnd.js"></script> -->
     <script>
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      // Next/previous controls
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      // Thumbnail image controls
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("demo");
+        let captionText = document.getElementById("caption");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+      }
       var sec = 0;
       let timer;
       function shuffle() {
@@ -140,7 +315,7 @@ by rearranging them to the picture shown.
                 $("#startBtn").show();
                 $("#popup").show();
                 $("#message").html(
-                  "<h2>Congratulations👏</h2><h1>! </h1> You have solved the puzzle in " +
+                  "<h2>👏 Congratulations !</h2><h1>Divya</h1> You have solved the puzzle in " +
                     completedin +
                     " seconds"
                 );
@@ -150,8 +325,48 @@ by rearranging them to the picture shown.
         }
       );
       $("#sortable").disableSelection();
+    </script>
+    <script>
+      let saveFile = () => {
+        const emailinput = document.getElementById("emailinput");
 
-      document.querySelector("#tile1").addEventListener(touchStart);
+        let data = "\r Email: " + emailinput.value;
+
+        // Convert the text to BLOB.
+        const textToBLOB = new Blob([data], { type: "text/plain" });
+        const sFileName = "formData.txt"; // The file to save the data.
+
+        let newLink = document.createElement("a");
+        newLink.download = sFileName;
+
+        if (window.webkitURL != null) {
+          newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        } else {
+          newLink.href = window.URL.createObjectURL(textToBLOB);
+          newLink.style.display = "none";
+          document.body.appendChild(newLink);
+        }
+
+        newLink.click();
+        let datae = "\r Email: " + emailinput.value;
+
+        let newLink = document.createElement("a");
+        newLink.download = sFileName;
+
+        if (window.webkitURL != null) {
+          newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        } else {
+          newLink.href = window.URL.createObjectURL(textToBLOB);
+          newLink.style.display = "none";
+          document.body.appendChild(newLink);
+        }
+
+        if (window.webkitURL != null) {
+          newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+          console.log(newLink); // add this line and see the result in your browser's console window.
+        }
+        newLink.click();
+      };
     </script>
   </body>
 </html>
